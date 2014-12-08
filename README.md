@@ -56,5 +56,8 @@ Questions
 		designer to specify a certain variable type each time the code is written. It is similar to an interface in java.
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
+		int* array = new int[10];
 
 #### 7. What is the purpose of a class destructor in C++? Why don't you need them in Java?
+		The class destructor is used to clean up space in memory when something is no longer needed. Java automatically
+		does this for you so it is not needed.
