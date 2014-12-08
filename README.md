@@ -52,6 +52,8 @@ Questions
 		You have to use #include and then whatever the name of the header file is that you want to "extend".
 
 #### 5. What is the purpose of "templates" in C++?
+		Templates allow for the designer to design code that can be used for any sort of variable type without requiring the
+		designer to specify a certain variable type each time the code is written. It is similar to an interface in java.
 
 #### 6. What would the syntax be for dynamically allocating an array of 10 ints, in C++?
 
