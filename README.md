@@ -28,20 +28,28 @@ Questions
 
 #### 1. Which of the above requirements work, and which do not? For each requirement, write a brief response.
 
-1. TODO
-2. TODO
-3. TODO
-4. TODO
-5. TODO
-6. TODO
-7. TODO
-8. TODO
+1. Works, remove function simply takes the variable at the front of the array and removes it, so it's constant time.
+2. Works, add simply adds one more to the tail end of the array. Takes more than constant if needs to grow first.
+3. Works, grow makes a new array that's twice the size of the first and then moves all the original data over.
+4. Works, grow depends on how many items are in the array when growing because all of the items need to transfer to the new array.
+5. Works, at the end of grow, the unused array is deleted and also the destructor successfully deletes the backing array at the end.
+6. Works, just returns the variable numItems.
+7. Works, remove tells the user when the array is empty, add grows the array if neccessary before adding.
+8. Works, the array only ever grows when numItems == backingArraySize.
 
 #### 2. If we did a Stack instead of a Queue, which of the private methods and variables would we need to keep, and which could we get rid of? Explain your answer.
+		We would need to keep grow method, as the array would still need to grow if there becomes too many variables for it to hold. We would need
+		to keep backingArray as it needs to keep track of the array. We don't need front any longer because you don't need to retrieve the variable at
+		the front of the array. We would still need numItems as that also can tell us where the end of the array is which we would need to know to
+		remove the last variable in the array. We would need to keep backingArraySize to know when to grow the array.
 
 #### 3. What is one question that confused you about this excercise, or one piece of advice you would share with students next semester?
+		My advice would be to google weird errors because I had a really weird error that kept showing up no matter what
+		but I found the answer of how to fix it when I googled it and it made me much happier than trying to figure out
+		how to fix it myself.
 
 #### 4. In Java you might write "class ArrayQueue extends Queue" ... how do you write the same thing in C++?
+		You have to use #include and then whatever the name of the header file is that you want to "extend".
 
 #### 5. What is the purpose of "templates" in C++?
 

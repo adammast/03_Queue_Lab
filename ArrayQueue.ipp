@@ -15,30 +15,52 @@
 // ArrayQueue<T> class.
 template <class T>
 ArrayQueue<T>::ArrayQueue(){
-
+	backingArray = new T[START_SIZE];
+	backingArraySize = START_SIZE;
+	front = 0;
+	numItems = 0;
 }
 
 template <class T>
 ArrayQueue<T>::~ArrayQueue() {
-
+	delete[] backingArray;
+	backingArray = NULL;
+	backingArraySize = 0;
+	numItems = 0;
+	front = 0;
 }
 
 template <class T>
 void ArrayQueue<T>::add(T toAdd){
-
+	if(numItems + 1 > backingArraySize) grow();
+	backingArray[(front + numItems) % backingArraySize] = toAdd;
+	numItems++;
 }
 
 template <class T>
 T ArrayQueue<T>::remove(){
-  
+	if (numItems < 1){
+		throw std::string("Queue is already empty, attempted to remove an element.");
+	}
+   T x = backingArray[front];
+   front = (front + 1) % backingArraySize;
+   numItems--;
+   return x;
 }
 
 template <class T>
 unsigned long ArrayQueue<T>::getNumItems(){
-
+	return numItems;
 }
 
 template <class T>
 void ArrayQueue<T>::grow(){
-
+	T* tempArray = new T[backingArraySize * 2];
+	for(unsigned int i = 0; i < backingArraySize; i++)
+		tempArray[i] = backingArray[(front + i) % backingArraySize];
+	backingArray = tempArray;
+	backingArraySize = backingArraySize * 2;
+	front = 0;
+	tempArray = NULL;
+	delete[] tempArray;
 }
